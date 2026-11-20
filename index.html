@@ -142,9 +142,44 @@
       </div>
     </section>
 
-    <section class="section" id="schedule" aria-labelledby="schedule-title">
+    <section class="section section--rule" id="schedule" aria-labelledby="schedule-title">
       <div class="container">
-        <h2 class="section__title" id="schedule-title">Weekly schedule</h2>
+        <h2 class="section__title reveal" id="schedule-title">Weekly schedule</h2>
+        <div class="tabs reveal">
+          <div class="tablist" role="tablist" aria-label="Day of the week">
+          <button class="tab" type="button" role="tab" id="tab-0" aria-controls="schedule-panel" aria-selected="true" tabindex="0" aria-label="Monday">Mon</button>
+          <button class="tab" type="button" role="tab" id="tab-1" aria-controls="schedule-panel" aria-selected="false" tabindex="-1" aria-label="Tuesday">Tue</button>
+          <button class="tab" type="button" role="tab" id="tab-2" aria-controls="schedule-panel" aria-selected="false" tabindex="-1" aria-label="Wednesday">Wed</button>
+          <button class="tab" type="button" role="tab" id="tab-3" aria-controls="schedule-panel" aria-selected="false" tabindex="-1" aria-label="Thursday">Thu</button>
+          <button class="tab" type="button" role="tab" id="tab-4" aria-controls="schedule-panel" aria-selected="false" tabindex="-1" aria-label="Friday">Fri</button>
+          <button class="tab" type="button" role="tab" id="tab-5" aria-controls="schedule-panel" aria-selected="false" tabindex="-1" aria-label="Saturday">Sat</button>
+          <button class="tab" type="button" role="tab" id="tab-6" aria-controls="schedule-panel" aria-selected="false" tabindex="-1" aria-label="Sunday">Sun</button>
+          </div>
+          <div class="tabpanel" id="schedule-panel" role="tabpanel" aria-labelledby="tab-0" tabindex="0">
+            <ul class="sched">
+            <li class="sched__row">
+              <span class="sched__time">6:00am</span>
+              <span class="sched__class"><span class="sched__name">Power Hour</span><span class="sched__coach">with Marcus</span></span>
+              <span class="sched__spots">6 spots left</span>
+            </li>
+            <li class="sched__row">
+              <span class="sched__time">12:15pm</span>
+              <span class="sched__class"><span class="sched__name">Conditioning</span><span class="sched__coach">with Lena</span></span>
+              <span class="sched__spots">4 spots left</span>
+            </li>
+            <li class="sched__row">
+              <span class="sched__time">6:30pm</span>
+              <span class="sched__class"><span class="sched__name">Strength Foundations</span><span class="sched__coach">with Diego</span></span>
+              <span class="sched__spots sched__spots--low">Only 2 left</span>
+            </li>
+            <li class="sched__row">
+              <span class="sched__time">7:45pm</span>
+              <span class="sched__class"><span class="sched__name">Mobility &amp; Recovery</span><span class="sched__coach">with Lena</span></span>
+              <span class="sched__spots">9 spots left</span>
+            </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -174,7 +209,7 @@
           </li>
           <li class="card card--coach reveal" style="--i:2">
             <article>
-              <img class="card__img card__img--portrait" src="assets/img/coach-diego-600.webp" srcset="assets/img/coach-diego-400.webp 400w, assets/img/coach-diego-600.webp 600w" sizes="(min-width: 900px) 30vw, 90vw" width="600" height="800" alt="Portrait of Diego Navarro, a bearded coach in a white polo shirt." loading="lazy" decoding="async">
+              <img class="card__img card__img--portrait" src="assets/img/coach-diego-600.webp" srcset="assets/img/coach-diego-400.webp 400w, assets/img/coach-diego-600.webp 600w" sizes="(min-width: 900px) 30vw, 90vw" width="600" height="750" alt="Portrait of Diego Navarro, a bearded coach in a black tank top against a teal wall." loading="lazy" decoding="async">
               <div class="card__body">
                 <h3 class="card__title">Diego Navarro</h3>
                 <p class="label card__role">Beginner Programs</p>
@@ -186,9 +221,59 @@
       </div>
     </section>
 
-    <section class="section" id="pricing" aria-labelledby="pricing-title">
+    <section class="section section--dark" id="pricing" aria-labelledby="pricing-title">
       <div class="container">
-        <h2 class="section__title" id="pricing-title">Pricing</h2>
+        <div class="pricing__head">
+          <h2 class="section__title reveal" id="pricing-title">Pricing</h2>
+          <div class="toggle" role="group" aria-label="Billing period">
+            <button class="toggle__btn" type="button" data-period="monthly" aria-pressed="true">Monthly</button>
+            <button class="toggle__btn" type="button" data-period="yearly" aria-pressed="false">Yearly <span class="toggle__save">· save 15%</span></button>
+          </div>
+        </div>
+        <p class="sr-only" id="pricing-status" aria-live="polite"></p>
+        <ul class="plans">
+          <li class="plan reveal" style="--i:0">
+            <article>
+              <h3 class="plan__name">Starter</h3>
+              <p class="plan__price"><span class="plan__amount" data-monthly="59" data-yearly="50">$59</span><span class="plan__per"> / month</span></p>
+              <p class="plan__billing" data-monthly="Billed monthly" data-yearly="Billed yearly">Billed monthly</p>
+              <ul class="plan__features">
+                <li>8 classes/month</li>
+                <li>Open gym access</li>
+                <li>App tracking</li>
+              </ul>
+              <a class="btn plan__cta" href="#booking">Start with a free class</a>
+            </article>
+          </li>
+          <li class="plan plan--pop reveal" style="--i:1">
+            <article>
+              <p class="label plan__badge">Most popular</p>
+              <h3 class="plan__name">Unlimited</h3>
+              <p class="plan__price"><span class="plan__amount" data-monthly="99" data-yearly="84">$99</span><span class="plan__per"> / month</span></p>
+              <p class="plan__billing" data-monthly="Billed monthly" data-yearly="Billed yearly">Billed monthly</p>
+              <ul class="plan__features">
+                <li>Unlimited classes</li>
+                <li>Open gym</li>
+                <li>Monthly progress check-in</li>
+              </ul>
+              <a class="btn plan__cta" href="#booking">Start with a free class</a>
+            </article>
+          </li>
+          <li class="plan reveal" style="--i:2">
+            <article>
+              <h3 class="plan__name">Coached 1:1</h3>
+              <p class="plan__price"><span class="plan__amount" data-monthly="189" data-yearly="160">$189</span><span class="plan__per"> / month</span></p>
+              <p class="plan__billing" data-monthly="Billed monthly" data-yearly="Billed yearly">Billed monthly</p>
+              <ul class="plan__features">
+                <li>Everything in Unlimited</li>
+                <li>4 private sessions/month</li>
+                <li>Custom program</li>
+              </ul>
+              <a class="btn plan__cta" href="#booking">Start with a free class</a>
+            </article>
+          </li>
+        </ul>
+        <p class="pricing__note reveal">No contracts. Cancel anytime.</p>
       </div>
     </section>
 
@@ -223,7 +308,29 @@
 
     <section class="section" id="faq" aria-labelledby="faq-title">
       <div class="container">
-        <h2 class="section__title" id="faq-title">FAQ</h2>
+        <h2 class="section__title reveal" id="faq-title">FAQ</h2>
+        <div class="faq">
+          <details class="faq__item reveal" name="faq" style="--i:0">
+            <summary>I'm a complete beginner. Is that okay?</summary>
+            <p>Absolutely. Most members started with Strength Foundations. Coaches scale every workout to your level.</p>
+          </details>
+          <details class="faq__item reveal" name="faq" style="--i:1">
+            <summary>Is the first class really free?</summary>
+            <p>Yes. Book any class, come try it, no payment info needed.</p>
+          </details>
+          <details class="faq__item reveal" name="faq" style="--i:2">
+            <summary>Do I need to sign a contract?</summary>
+            <p>No. All plans are month-to-month and you can cancel anytime.</p>
+          </details>
+          <details class="faq__item reveal" name="faq" style="--i:3">
+            <summary>What should I bring?</summary>
+            <p>Comfortable clothes, training shoes and a water bottle. We have everything else.</p>
+          </details>
+          <details class="faq__item reveal" name="faq" style="--i:4">
+            <summary>Can I freeze my membership?</summary>
+            <p>Yes, up to 2 months per year at no cost.</p>
+          </details>
+        </div>
       </div>
     </section>
 

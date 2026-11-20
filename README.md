@@ -15,7 +15,7 @@ Status: Phases 1-2 built (nav, hero, why, classes, coaches, testimonials). Later
 - Coach portraits (Unsplash License, cropped; stand-ins for fictional coaches):
   - Marcus Reid: "Man with arms crossed in a gym" by Vitaly Gariev, https://unsplash.com/photos/man-with-arms-crossed-in-a-gym-V-gUIqzSXig
   - Lena Ortiz: "Woman in black and white crew neck t-shirt smiling" by Logan Weaver, https://unsplash.com/photos/woman-in-black-and-white-crew-neck-t-shirt-smiling-sPiMBrdGG9c
-  - Diego Navarro: "A man lifting a barbell in a gym" by Sergio Kian (cropped to the coach), https://unsplash.com/photos/a-man-lifting-a-barbell-in-a-gym-7XhgGF5e1xE
+  - Diego Navarro: "Man in black tank top" by Lorenzo Fattò Offidani, https://unsplash.com/photos/man-in-black-tank-top-P6T1R9rSL0Q
 - Fonts: Barlow Condensed and Inter via Google Fonts (SIL Open Font License).
 
 Northline Strength Club is a fictional brand. Portfolio concept designed and built by Esteban Castro.
