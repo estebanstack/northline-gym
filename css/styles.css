@@ -4,6 +4,26 @@
    hero · sections · booking form · footer · reveal · reduced motion
    ========================================================================== */
 
+/* ---------- Fallback fonts with matched metrics (reduces layout shift when the web fonts swap in) ---------- */
+@font-face {
+  font-family: "Barlow Condensed Fallback";
+  src: local("Arial Bold"), local("Liberation Sans Bold"), local("Helvetica Bold"), local("Arial");
+  font-weight: 700 800;
+  size-adjust: 70%;
+  ascent-override: 143%;
+  descent-override: 29%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial"), local("Liberation Sans"), local("Helvetica");
+  font-weight: 400 600;
+  size-adjust: 107%;
+  ascent-override: 90.5%;
+  descent-override: 22.5%;
+  line-gap-override: 0%;
+}
+
 /* ---------- Tokens ---------- */
 :root {
   --ground: #F4F1EC;
@@ -11,11 +31,12 @@
   --ink: #16181A;
   --accent: #FF5A1F;      /* fills only (buttons, rules) */
   --accent-ink: #D9430C;  /* orange TEXT, large text only */
-  --muted: #6B6F73;
+  --accent-ink-sm: #B4310A; /* orange text at small sizes (about 5.6:1 on --ground) */
+  --muted: #5C6064;   /* darkened from the brief's #6B6F73 so 11px labels pass 4.5:1 on --ground-2 */
   --hairline: #DDD8D0;
 
-  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Barlow Condensed", "Barlow Condensed Fallback", "Arial Narrow", sans-serif;
+  --font-body: "Inter", "Inter Fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --radius: 2px;
   --nav-h: 64px;
@@ -599,7 +620,7 @@ ul.grid, ul.why, ul.quotes { list-style: none; margin: 0; padding: 0; }
 }
 .sched__coach { font-size: 14px; color: var(--muted); }
 .sched__spots { font-size: 13px; font-weight: 500; color: var(--muted); text-align: right; }
-.sched__spots--low { color: var(--accent-ink); font-weight: 600; }
+.sched__spots--low { color: var(--accent-ink-sm); font-weight: 600; }
 
 @media (min-width: 768px) {
   .sched__row { grid-template-columns: 150px minmax(0, 1.5fr) minmax(0, 1fr) 120px; padding: var(--s-5) 0; }
@@ -758,8 +779,8 @@ ul.grid, ul.why, ul.quotes { list-style: none; margin: 0; padding: 0; }
 .field select:hover { border-color: var(--ink); }
 .field input:focus-visible,
 .field select:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-color: var(--ink); }
-.field [aria-invalid="true"] { border-color: #B4310A; box-shadow: inset 0 0 0 1px #B4310A; }
-.field__error { font-size: 14px; font-weight: 500; color: #B4310A; }
+.field [aria-invalid="true"] { border-color: var(--accent-ink-sm); box-shadow: inset 0 0 0 1px #B4310A; }
+.field__error { font-size: 14px; font-weight: 500; color: var(--accent-ink-sm); }
 .field__error[hidden] { display: none; }
 .field--submit { align-self: end; }
 .field--submit .btn { width: 100%; }

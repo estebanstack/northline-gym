@@ -45,14 +45,20 @@
     if (!reduceMotion) {
       var ticking = false;
       var art = hero.querySelector('.hero__art');
+      // measurements are cached and refreshed on resize, so the scroll handler never forces layout
+      var heroH = 1, viewH = 1;
+      var measure = function () {
+        heroH = hero.offsetHeight || 1;
+        viewH = window.innerHeight;
+      };
+      requestAnimationFrame(measure);
+      window.addEventListener('resize', measure, { passive: true });
 
       var update = function () {
         ticking = false;
-        var h = hero.offsetHeight || 1;
-        var p = Math.min(Math.max(window.scrollY / h, 0), 1);
-        var vh = window.innerHeight;
-        art.style.setProperty('--drift', (p * vh * 0.08).toFixed(1) + 'px');
-        art.style.setProperty('--rise', (p * vh * 0.03).toFixed(1) + 'px');
+        var p = Math.min(Math.max(window.scrollY / heroH, 0), 1);
+        art.style.setProperty('--drift', (p * viewH * 0.08).toFixed(1) + 'px');
+        art.style.setProperty('--rise', (p * viewH * 0.03).toFixed(1) + 'px');
       };
 
       window.addEventListener('scroll', function () {
@@ -100,17 +106,18 @@
     };
 
     var selectTab = function (i, focus) {
-      tabs.forEach(function (t, n) {
-        var on = n === i;
-        t.setAttribute('aria-selected', String(on));
-        t.tabIndex = on ? 0 : -1;
-      });
-      panel.setAttribute('aria-labelledby', tabs[i].id);
-      renderDay(i);
-      if (focus) tabs[i].focus();
-      // keep the active tab visible inside the scrollable tablist (no page scroll)
+      // read layout first, then write (avoids a forced reflow)
       var t = tabs[i];
       var left = t.offsetLeft - (tablist.clientWidth - t.offsetWidth) / 2;
+      tabs.forEach(function (tab, n) {
+        var on = n === i;
+        tab.setAttribute('aria-selected', String(on));
+        tab.tabIndex = on ? 0 : -1;
+      });
+      panel.setAttribute('aria-labelledby', t.id);
+      renderDay(i);
+      if (focus) t.focus({ preventScroll: true });
+      // keep the active tab visible inside the scrollable tablist (no page scroll)
       tablist.scrollTo({ left: left, behavior: reduceMotion ? 'auto' : 'smooth' });
     };
 
