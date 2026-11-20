@@ -29,7 +29,7 @@ python3 -m http.server 8000
 
 ## Lighthouse (mobile)
 
-Performance 95 · Accessibility 100 · Best Practices 100 · SEO 100 (Lighthouse 13.6, local run; re-check on the live URL)
+Performance 93 · Accessibility 100 · Best Practices 100 · SEO 100 (Lighthouse 13.6, mobile, live Vercel URL)
 
 ## Credits
 
