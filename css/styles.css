@@ -1,7 +1,7 @@
 /* ==========================================================================
    Northline Strength Club — styles
    Mobile-first. Sections: tokens · base · buttons · nav · mobile bar ·
-   hero · placeholder sections · footer · reveal · reduced motion
+   hero · sections · booking form · footer · reveal · reduced motion
    ========================================================================== */
 
 /* ---------- Tokens ---------- */
@@ -728,12 +728,123 @@ ul.grid, ul.why, ul.quotes { list-style: none; margin: 0; padding: 0; }
 .faq__item summary:focus-visible { outline-offset: 2px; }
 .faq__item p { padding: 0 var(--s-8) var(--s-5) 0; color: rgba(22, 24, 26, 0.8); max-width: 62ch; }
 
-/* ---------- Footer (placeholder) ---------- */
+/* ---------- Booking form ---------- */
+.booking { display: grid; gap: var(--s-6); }
+.booking__intro .section__title { margin-bottom: var(--s-4); }
+.booking__lead { font-size: 18px; color: rgba(22, 24, 26, 0.8); max-width: 36ch; }
+.booking__panel {
+  background: var(--ground-2);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+
+.form { display: grid; gap: var(--s-5); grid-template-columns: 1fr; }
+.field { display: flex; flex-direction: column; gap: var(--s-2); min-width: 0; }
+.field label { font-weight: 600; font-size: 14px; }
+.field input,
+.field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 var(--s-4);
+  background: var(--ground);
+  color: var(--ink);
+  border: 1px solid #A9A59D;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+.field input:hover,
+.field select:hover { border-color: var(--ink); }
+.field input:focus-visible,
+.field select:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-color: var(--ink); }
+.field [aria-invalid="true"] { border-color: #B4310A; box-shadow: inset 0 0 0 1px #B4310A; }
+.field__error { font-size: 14px; font-weight: 500; color: #B4310A; }
+.field__error[hidden] { display: none; }
+.field--submit { align-self: end; }
+.field--submit .btn { width: 100%; }
+.btn[disabled] { opacity: 0.7; cursor: progress; }
+
+.success { padding: var(--s-6) var(--s-2); }
+.success:focus { outline: none; }
+.success:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.success[hidden], .form[hidden] { display: none; }
+.success__title {
+  margin-bottom: var(--s-3);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(40px, 8vw, 64px);
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.success p:last-child { font-size: 18px; }
+
+@media (min-width: 768px) {
+  .booking__panel { padding: var(--s-6); }
+  .form { grid-template-columns: 1fr 1fr; gap: var(--s-5) var(--s-5); }
+  .field--submit { grid-column: 1 / -1; }
+  .field--submit .btn { width: auto; align-self: flex-start; }
+}
+@media (min-width: 1100px) {
+  .booking { grid-template-columns: 5fr 7fr; gap: var(--s-8); align-items: start; }
+}
+
+/* ---------- Footer ---------- */
 .footer {
-  padding: var(--s-7) 0;
+  padding: var(--s-8) 0 var(--s-6);
   background: var(--ink);
   color: var(--ground);
-  font-size: 14px;
+  font-size: 15px;
+}
+.footer :focus-visible { outline-color: var(--accent); }
+.footer__grid { display: grid; gap: var(--s-7); grid-template-columns: 1fr; }
+.footer__logo { font-size: 36px; display: inline-block; }
+.footer__logo span { color: var(--accent); }
+.footer__tag { margin: var(--s-3) 0 var(--s-5); color: #B6B4B0; }
+.footer__address { font-style: normal; font-weight: 500; margin-bottom: var(--s-4); }
+.footer__hours { list-style: none; margin: 0 0 var(--s-5); padding: 0; color: #B6B4B0; }
+.footer__hours span { display: inline-block; min-width: 76px; color: var(--ground); font-weight: 500; }
+.social { display: flex; gap: var(--s-3); }
+.social__link {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(244, 241, 236, 0.14);
+  border-radius: var(--radius);
+  color: var(--ground);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.social__link:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+
+.map { margin: 0; border: 1px solid rgba(244, 241, 236, 0.14); border-radius: var(--radius); overflow: hidden; background: #1d2023; }
+.map svg { display: block; width: 100%; height: 260px; }
+.map figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-3);
+  padding: var(--s-4);
+  border-top: 1px solid rgba(244, 241, 236, 0.14);
+  color: #B6B4B0;
+}
+.map figcaption strong { color: var(--ground); font-weight: 600; }
+
+.footer__legal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  margin-top: var(--s-7);
+  padding-top: var(--s-5);
+  border-top: 1px solid rgba(244, 241, 236, 0.14);
+  font-size: 13px;
+  color: #B6B4B0;
+}
+
+@media (min-width: 900px) {
+  .footer__grid { grid-template-columns: 1fr 1.2fr; gap: var(--s-8); align-items: start; }
+  .map svg { height: 320px; }
+  .footer__legal { flex-direction: row; justify-content: space-between; }
 }
 
 /* ---------- Scroll reveal (applied by JS, never hides content without it) ---------- */
@@ -764,5 +875,5 @@ ul.grid, ul.why, ul.quotes { list-style: none; margin: 0; padding: 0; }
     transform: none;
     transition: none;
   }
-  .btn, .nav__toggle span, .link-arrow, .tab, .toggle__btn, .faq__item summary::after { transition: none; }
+  .btn, .social__link, .nav__toggle span, .link-arrow, .tab, .toggle__btn, .faq__item summary::after { transition: none; }
 }

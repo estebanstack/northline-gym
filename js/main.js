@@ -160,6 +160,81 @@
     });
   }
 
+
+  /* ---------- Booking form (front-end only, no network request) ---------- */
+  var form = document.getElementById('booking-form');
+  if (form) {
+    var submitBtn = document.getElementById('f-submit');
+    var success = document.getElementById('booking-success');
+    var dayInput = document.getElementById('f-day');
+    var submitted = false;
+
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var d0 = new Date();
+    var todayStr = d0.getFullYear() + '-' + pad(d0.getMonth() + 1) + '-' + pad(d0.getDate());
+    dayInput.min = todayStr;
+
+    var rules = {
+      name: function (v) { return v.trim() ? '' : 'Please enter your full name.'; },
+      email: function (v) {
+        v = v.trim();
+        if (!v) return 'Please enter your email address.';
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? '' : 'Please enter a valid email address, like name@example.com.';
+      },
+      phone: function (v) {
+        if (!v.trim()) return 'Please enter your phone number.';
+        return v.replace(/\D/g, '').length >= 7 ? '' : 'Please enter a phone number with at least 7 digits.';
+      },
+      class: function (v) { return v ? '' : 'Please choose a class.'; },
+      day: function (v) {
+        if (!v) return 'Please choose a day.';
+        return v >= todayStr ? '' : 'Please choose today or a later day.';
+      }
+    };
+
+    var fields = Array.prototype.slice.call(form.querySelectorAll('input, select'));
+
+    var validate = function (el) {
+      var msg = rules[el.name](el.value);
+      var err = document.getElementById(el.id + '-err');
+      if (msg) {
+        el.setAttribute('aria-invalid', 'true');
+        err.textContent = msg;
+        err.hidden = false;
+      } else {
+        el.removeAttribute('aria-invalid');
+        err.textContent = '';
+        err.hidden = true;
+      }
+      return !msg;
+    };
+
+    fields.forEach(function (el) {
+      el.addEventListener('blur', function () { if (submitted) validate(el); });
+      el.addEventListener('input', function () { if (submitted) validate(el); });
+      el.addEventListener('change', function () { if (submitted) validate(el); });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitted = true;
+      var firstBad = null;
+      fields.forEach(function (el) {
+        if (!validate(el) && !firstBad) firstBad = el;
+      });
+      if (firstBad) { firstBad.focus(); return; }
+
+      submitBtn.disabled = true;
+      submitBtn.setAttribute('aria-busy', 'true');
+      submitBtn.textContent = 'Booking\u2026';
+      setTimeout(function () {
+        form.hidden = true;
+        success.hidden = false;
+        success.focus();
+      }, 1200);
+    });
+  }
+
   /* ---------- Generic .reveal helper for later sections ---------- */
   var revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length) {

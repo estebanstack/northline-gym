@@ -1,8 +1,33 @@
-# Northline Strength Club — landing page
+# Northline Strength Club
 
-Fictional gym landing page, portfolio concept. Plain HTML, CSS and JavaScript. No framework, no build step.
+A fast, mobile-first landing page for a fictional strength gym, built to turn visitors into free first-class bookings. Portfolio concept, hand-coded in plain HTML, CSS and JavaScript.
 
-Status: Phases 1-2 built (nav, hero, why, classes, coaches, testimonials). Later sections are placeholders.
+## Features
+
+- Cut-out athlete hero with a split "NORTH / LINE." wordmark, an intro animation and a subtle scroll drift
+- Sticky nav with an accessible mobile menu and a sticky "Book a free class" bar on mobile
+- Weekly schedule: WAI-ARIA tabs (arrow keys, Home/End), defaults to today, scrolls horizontally on mobile, low-spot warnings
+- Pricing on a dark section with a monthly/yearly toggle (`aria-pressed`, live-region announcements)
+- FAQ built on native `<details>`/`<summary>`, one open at a time
+- Accessible booking form: visible labels, inline errors tied with `aria-describedby`, `aria-invalid`, focus on the first error, loading and success states (front-end only, no network request)
+- Static SVG map block in the footer (no third-party embed)
+- Respects `prefers-reduced-motion`; scroll reveals never hide content without JavaScript
+- Responsive from 375px to 1440px, optimised WebP images, Open Graph and Twitter card metadata
+
+## Stack
+
+Plain HTML, CSS and JavaScript. No framework, no build step, no npm dependencies. Fonts: Barlow Condensed and Inter from Google Fonts.
+
+## Run locally
+
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000
+```
+
+## Lighthouse (mobile)
+
+Performance: TBD · Accessibility: TBD · Best Practices: TBD · SEO: TBD
 
 ## Credits
 
