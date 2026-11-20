@@ -27,7 +27,7 @@ python3 -m http.server 8000
 
 ## Lighthouse (mobile)
 
-Performance: TBD · Accessibility: TBD · Best Practices: TBD · SEO: TBD
+Performance 99 · Accessibility 100 · Best Practices 100 · SEO 100 (Lighthouse 13.6, local run; re-check on the live URL)
 
 ## Credits
 
