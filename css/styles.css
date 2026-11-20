@@ -444,6 +444,97 @@ a { color: inherit; }
 .section { padding: var(--s-9) 0; }
 .section__title { font-size: clamp(40px, 8vw, 72px); }
 
+
+/* ---------- Section scaffolding ---------- */
+.section__title { margin-bottom: var(--s-7); }
+.section--rule { border-top: 1px solid var(--hairline); }
+.section--alt { background: var(--ground-2); }
+
+ul.grid, ul.why, ul.quotes { list-style: none; margin: 0; padding: 0; }
+
+/* ---------- Why Northline ---------- */
+.why__item {
+  padding: var(--s-5) 0 var(--s-6);
+  border-top: 1px solid var(--hairline);
+}
+.why__num {
+  display: block;
+  margin-bottom: var(--s-4);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 0.85;
+  color: var(--accent-ink); /* large text only */
+}
+.why__title { font-size: 32px; margin-bottom: var(--s-3); }
+.why__item p { color: rgba(22, 24, 26, 0.8); max-width: 34ch; }
+
+@media (min-width: 900px) {
+  .why { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--hairline); }
+  .why__item { padding: var(--s-6) var(--s-6) var(--s-6) var(--s-6); border-top: 0; border-left: 1px solid var(--hairline); }
+  .why__item:first-child { padding-left: 0; border-left: 0; }
+  .why__num { font-size: 96px; }
+}
+
+/* ---------- Cards (classes + coaches) ---------- */
+.grid { display: grid; gap: var(--s-6) var(--s-5); grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1280px) {
+  .grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 767.98px) {
+  .grid--3 { max-width: 440px; }
+}
+
+.card { border: 1px solid var(--hairline); border-radius: var(--radius); background: var(--ground); overflow: hidden; }
+.section--alt .card { background: var(--ground); }
+.card__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--ground-2);
+}
+.card__img--portrait { aspect-ratio: 4 / 5; object-position: center top; }
+.card__body { padding: var(--s-5); }
+.card__title { font-size: 30px; margin-bottom: var(--s-3); }
+.card__text { color: rgba(22, 24, 26, 0.8); font-size: 15px; }
+.card__meta { margin-top: var(--s-4); color: var(--muted); }
+.card__role { margin-bottom: var(--s-3); color: var(--muted); }
+
+/* coach photos: subtle grayscale that warms up on hover (hover-capable devices only) */
+@media (hover: hover) {
+  .card--coach .card__img {
+    filter: grayscale(1) contrast(1.03);
+    transition: filter 0.4s ease;
+  }
+  .card--coach:hover .card__img,
+  .card--coach:focus-within .card__img { filter: none; }
+}
+
+/* ---------- Testimonials ---------- */
+.quotes { display: grid; gap: var(--s-7); grid-template-columns: 1fr; }
+@media (min-width: 900px) {
+  .quotes { grid-template-columns: repeat(3, 1fr); gap: var(--s-7); }
+}
+.quote figure { margin: 0; }
+.quote__mark {
+  display: block;
+  height: 84px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 140px;
+  line-height: 1;
+  color: var(--accent-ink);
+}
+.quote blockquote { margin: 0 0 var(--s-5); }
+.quote blockquote p { font-size: 20px; font-weight: 500; line-height: 1.45; }
+.quote figcaption { display: flex; flex-direction: column; gap: var(--s-1); padding-top: var(--s-4); border-top: 1px solid var(--hairline); }
+.quote figcaption .label { color: var(--muted); }
+
 /* ---------- Footer (placeholder) ---------- */
 .footer {
   padding: var(--s-7) 0;
