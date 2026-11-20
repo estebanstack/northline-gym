@@ -292,93 +292,38 @@ a { color: inherit; }
   .bottom-bar { display: none; }
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero: poster layout (art stage + bottom copy band) ---------- */
 .hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--ground-2);
   overflow: hidden;
 }
 
-.hero__inner {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero__copy {
-  position: relative;
-  z-index: 5;
-  padding: var(--s-7) 0 var(--s-5);
-  max-width: 560px;
-}
-
-.hero__eyebrow {
-  color: var(--muted);
-  margin-bottom: var(--s-4);
-}
-
-.hero__title {
-  font-size: clamp(52px, 15vw, 84px);
-  line-height: 0.85;
-  margin-bottom: var(--s-5);
-}
-.hero__title em {
-  display: block;
-  font-style: normal;
-  color: var(--accent-ink);
-}
-
-.hero__sub {
-  font-size: 18px;
-  color: rgba(22, 24, 26, 0.8);
-  max-width: 440px;
-  margin-bottom: var(--s-6);
-}
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--s-4) var(--s-5);
-}
-
-.hero__proof {
-  list-style: none;
-  margin: var(--s-6) 0 0;
-  padding: var(--s-4) 0 0;
-  border-top: 1px solid var(--hairline);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-2) var(--s-5);
-  font-size: 14px;
-  font-weight: 500;
-}
-.hero__proof li + li { position: relative; }
-.hero__proof .star { color: var(--accent-ink); }
-
-/* art block: split wordmark + athlete.
-   Sized in container units so the bracket composition holds at any size:
-   NORTH sits above (athlete's hair/hands just touch its lower edge, behind),
-   LINE. sits lower and in front of the torso. */
+/* art stage: NORTH behind the athlete, LINE. in front.
+   Everything is sized in container units, so the composition holds at any stage size. */
 .hero__art {
-  --F: min(28cqh, 40cqw, 260px);   /* wordmark font size */
+  --F: min(30cqh, 40cqw, 400px);   /* wordmark font size */
+  --A: min(73cqh, 125cqw);         /* athlete height */
   position: relative;
   container-type: size;
   width: 100%;
-  max-width: 560px;
-  aspect-ratio: 1 / 1.25;
-  margin-inline: auto;
+  height: min(112vw, 620px);
+  flex: 0 0 auto;
   pointer-events: none;
 }
 
 .hero__line {
   position: absolute;
+  left: 0;
   right: 0;
   font-family: var(--font-display);
   font-weight: 800;
   font-size: var(--F);
   line-height: 0.82;
   letter-spacing: -0.01em;
-  text-align: right;
+  text-align: center;
   white-space: nowrap;
   color: var(--ink);
   user-select: none;
@@ -390,18 +335,26 @@ a { color: inherit; }
   transform: translate3d(0, calc(var(--drift, 0px) * -1), 0);
 }
 .hero__line--bottom {
-  top: 50cqh;
+  top: 53cqh;
   z-index: 3; /* in front of the athlete */
   transform: translate3d(0, var(--drift, 0px), 0);
 }
-.hero__line--bottom span { color: var(--accent-ink); }
+/* the period is a small square in the accent colour */
+.hero__dot {
+  display: inline-block;
+  width: 0.13em;
+  height: 0.13em;
+  margin-left: 0.05em;
+  background: var(--accent);
+}
 
 .hero__athlete {
   position: absolute;
-  right: 1cqw;
+  left: 50%;
   bottom: 0;
   z-index: 2;
-  height: min(78cqh, 116cqw);
+  height: var(--A);
+  margin-left: calc(var(--A) * -0.391); /* half of the 0.782 aspect ratio, centres her */
   transform: translate3d(0, calc(var(--rise, 0px) * -1), 0);
   will-change: transform;
 }
@@ -411,33 +364,85 @@ a { color: inherit; }
   filter: drop-shadow(0 10px 18px rgba(22, 24, 26, 0.28));
 }
 
+/* bottom band */
+.hero__band {
+  position: relative;
+  z-index: 5;
+  background: var(--ground);
+  border-top: 1px solid var(--hairline);
+}
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  padding-block: var(--s-6);
+}
+
+.hero__eyebrow { color: var(--muted); margin-bottom: var(--s-3); }
+
+.hero__title {
+  font-size: clamp(40px, 11vw, 56px);
+  line-height: 0.9;
+  margin-bottom: var(--s-3);
+}
+.hero__title em {
+  display: block;
+  font-style: normal;
+  color: var(--accent-ink);
+}
+
+.hero__sub {
+  font-size: 16px;
+  color: rgba(22, 24, 26, 0.8);
+  max-width: 84ch;
+}
+
+.hero__aside { display: flex; flex-direction: column; gap: var(--s-4); }
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4) var(--s-5);
+}
+
+.hero__proof {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-5);
+  font-size: 14px;
+  font-weight: 500;
+}
+.hero__proof .star { color: var(--accent-ink); }
+
 @media (min-width: 900px) {
   .hero {
     height: calc(100svh - var(--nav-h));
-    min-height: 560px;
+    min-height: 600px;
     max-height: 980px;
   }
+  .hero__art { flex: 1 1 0; min-height: 0; height: auto; }
   .hero__inner {
-    height: 100%;
     flex-direction: row;
-    align-items: stretch;
+    align-items: center;
     justify-content: space-between;
+    gap: var(--s-6);
+    padding-block: var(--s-5);
   }
-  .hero__copy {
-    flex: 0 0 44vw;
-    max-width: 640px;
-    align-self: center;
-    padding: 0;
-  }
-  .hero__title { font-size: clamp(52px, 4.4vw, 68px); }
-  .hero__art {
-    flex: 1;
-    min-width: 0;
-    height: 100%;
-    max-width: none;
-    aspect-ratio: auto;
-    margin-inline: 0;
-  }
+  .hero__copy { flex: 1 1 auto; max-width: 760px; }
+  .hero__aside { flex: 0 0 auto; align-items: flex-end; }
+  .hero__title { font-size: clamp(36px, 3.4vw, 52px); }
+  .hero__title em { display: inline; }
+  .hero__sub { font-size: 15px; }
+  .hero__proof { justify-content: flex-end; }
+}
+@media (min-width: 900px) and (max-width: 1199.98px) {
+  .hero__inner { flex-direction: column; align-items: flex-start; gap: var(--s-4); }
+  .hero__aside { align-items: flex-start; }
+  .hero__proof { justify-content: flex-start; }
 }
 
 /* intro: hidden until JS adds .is-ready (only if JS is running) */

@@ -27,11 +27,11 @@ python3 -m http.server 8000
 
 ## Lighthouse (mobile)
 
-Performance 99 · Accessibility 100 · Best Practices 100 · SEO 100 (Lighthouse 13.6, local run; re-check on the live URL)
+Performance 95 · Accessibility 100 · Best Practices 100 · SEO 100 (Lighthouse 13.6, local run; re-check on the live URL)
 
 ## Credits
 
-- Hero athlete photo: "woman doing weight lifting" by John Arano on Unsplash, https://unsplash.com/photos/woman-doing-weight-lifting-h4i9G-de7Po (Unsplash License). Background removed locally with rembg, exported to WebP.
+- Hero athlete photo: "A woman holding two orange kettlebells over her head" by April Laugh on Unsplash, https://unsplash.com/photos/F9UIMBsoGi8 (Unsplash License). Background removed locally with rembg, edges cleaned, cropped to mid-thigh and exported to WebP.
 - Class photos (Unsplash License, cropped and converted to WebP):
   - Strength Foundations: "Woman lifting weights with trainer watching" by Vitaly Gariev, https://unsplash.com/photos/woman-lifting-weights-with-trainer-watching-rD0poLlu57M
   - Power Hour: "Person lifting barbell in gym" by Victor Freitas, https://unsplash.com/photos/person-lifting-barbell-in-gym-qZ-U9z4TQ6A

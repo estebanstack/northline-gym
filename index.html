@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" type="image/webp" href="assets/img/athlete-1400.webp" media="(min-width: 900px)" fetchpriority="high">
-  <link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/athlete-640.webp 549w, assets/img/athlete-800.webp 686w" imagesizes="(max-width: 560px) 75vw, 470px" media="(max-width: 899.98px)" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/athlete-640.webp 501w, assets/img/athlete-800.webp 626w" imagesizes="(max-width: 560px) 66vw, 380px" media="(max-width: 899.98px)" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/main.js" defer></script>
@@ -57,29 +57,33 @@
 
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="container hero__inner">
-        <div class="hero__copy">
-          <p class="label hero__eyebrow">Riverside District · Strength training for real life</p>
-          <h1 class="hero__title" id="hero-title">Get strong. <em>Stay consistent.</em></h1>
-          <p class="hero__sub">Coached strength classes for busy people. Small groups, real progress, and no long-term contracts.</p>
-          <div class="hero__actions">
-            <a class="btn btn--lg" href="#booking">Book your free first class</a>
-            <a class="link-arrow" href="#pricing">See membership plans &rarr;</a>
-          </div>
-          <ul class="hero__proof">
-            <li><span class="star" aria-hidden="true">★</span> 4.9 from 300+ members</li>
-            <li>Open 5am–10pm</li>
-            <li>Cancel anytime</li>
-          </ul>
-        </div>
+      <div class="hero__art" aria-hidden="true">
+        <span class="hero__line hero__line--top">NORTH</span>
+        <picture class="hero__athlete">
+          <source media="(min-width: 900px)" srcset="assets/img/athlete-1400.webp" width="1095" height="1400">
+          <img src="assets/img/athlete-640.webp" srcset="assets/img/athlete-640.webp 501w, assets/img/athlete-800.webp 626w" sizes="(max-width: 560px) 66vw, 380px" width="501" height="640" alt="" fetchpriority="high" decoding="async">
+        </picture>
+        <span class="hero__line hero__line--bottom">LINE<span class="hero__dot" aria-hidden="true"></span></span>
+      </div>
 
-        <div class="hero__art" aria-hidden="true">
-          <span class="hero__line hero__line--top">NORTH</span>
-          <picture class="hero__athlete">
-            <source media="(min-width: 900px)" srcset="assets/img/athlete-1400.webp" width="1200" height="1400">
-            <img src="assets/img/athlete-640.webp" srcset="assets/img/athlete-640.webp 549w, assets/img/athlete-800.webp 686w" sizes="(max-width: 560px) 75vw, 470px" width="549" height="640" alt="" fetchpriority="high" decoding="async">
-          </picture>
-          <span class="hero__line hero__line--bottom">LINE<span>.</span></span>
+      <div class="hero__band">
+        <div class="container hero__inner">
+          <div class="hero__copy">
+            <p class="label hero__eyebrow">Riverside District · Strength training for real life</p>
+            <h1 class="hero__title" id="hero-title">Get strong. <em>Stay consistent.</em></h1>
+            <p class="hero__sub">Coached strength classes for busy people. Small groups, real progress, and no long-term contracts.</p>
+          </div>
+          <div class="hero__aside">
+            <div class="hero__actions">
+              <a class="btn btn--lg" href="#booking">Book your free first class</a>
+              <a class="link-arrow" href="#pricing">See membership plans &rarr;</a>
+            </div>
+            <ul class="hero__proof">
+              <li><span class="star" aria-hidden="true">★</span> 4.9 from 300+ members</li>
+              <li>Open 5am–10pm</li>
+              <li>Cancel anytime</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
