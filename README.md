@@ -2,6 +2,8 @@
 
 A fast, mobile-first landing page for a fictional strength gym, built to turn visitors into free first-class bookings. Portfolio concept, hand-coded in plain HTML, CSS and JavaScript.
 
+**Live:** https://northline-gym.vercel.app
+
 ## Features
 
 - Cut-out athlete hero with a split "NORTH / LINE." wordmark, an intro animation and a subtle scroll drift
